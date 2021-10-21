@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Luvina\Test\Api\Data\StaffInterface" type="Luvina\Test\Model\Staff" />
+    <preference for="Luvina\Test\Api\StaffRepositoryInterface" type="Luvina\Test\Model\StaffRepository" />
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="staff_listing_data_source" xsi:type="string">Luvina\Test\Model\ResourceModel\Staff\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Luvina\Test\Model\ResourceModel\Staff\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">luvina_test_staff</argument>
+            <argument name="resourceModel" xsi:type="string">Luvina\Test\Model\ResourceModel\Staff</argument>
+        </arguments>
+    </virtualType>
+</config>

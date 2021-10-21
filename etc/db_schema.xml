@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="luvina_test_staff" resource="default" engine="innodb" comment="Staff" >
+        <column xsi:type="int" name="staff_id" unsigned="true" nullable="false" identity="true" comment="Staff ID"/>
+        <column xsi:type="varchar" name="name" nullable="true" length="255" comment="Name"/>
+        <column xsi:type="date" name="birthday" comment="Birthday"/>
+        <column xsi:type="varchar" name="dev" nullable="true" length="255" comment="Dev"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="staff_id"/>
+        </constraint>
+    </table>
+    <table name="luvina_test_result" resource="default" engine="innodb" comment="Label DataSource">
+        <column xsi:type="int" name="result_id" unsigned="true" nullable="false" identity="true" comment="Result ID"/>
+        <column xsi:type="int" name="staff_id" unsigned="true" nullable="false" identity="false" comment="Staff ID"/>
+        <column xsi:type="date" name="test_date" comment="Test Date"/>
+        <column xsi:type="varchar" name="subject_classification" nullable="false" length="20" comment="Subject Classification"/>
+        <column xsi:type="int" name="point" unsigned="true" nullable="false" comment="Point"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="result_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="LUVINA_TEST_STAFF_ID"
+                    table="luvina_test_result" column="staff_id" referenceTable="luvina_test_staff"
+                    referenceColumn="staff_id" onDelete="CASCADE"/>
+        <index referenceId="LUVINAN_TEST_OPTION" indexType="btree">
+            <column name="staff_id"/>
+        </index>
+    </table>
+</schema>

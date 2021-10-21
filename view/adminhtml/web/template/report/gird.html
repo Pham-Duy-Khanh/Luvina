@@ -1,0 +1,39 @@
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+<h1 style="color: green">Check Birthday (Xu ly bang knockout js cua magento)</h1>
+<table id="registry-list">
+    <thead>
+    <tr>
+        <th data-bind="i18n: 'Staff ID'"></th>
+        <th data-bind="i18n: 'Name'"></th>
+        <th data-bind="i18n: 'Birthday'"></th>
+        <th data-bind="i18n: 'Point'"></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- ko foreach: { data: items, as: 'item' } -->
+    <tr>
+        <td data-bind="text: item.staff_id, attr:{'data-th': $t('Staff ID')}"></td>
+        <td data-bind="text: item.name, attr:{'data-th': $t('Name')}"></td>
+        <td data-bind="text: item.birthday, attr:{'data-th': $t('Birthday')}"></td>
+        <td data-bind="text: item.point, attr:{'data-th': $t('Point')}"></td>
+    </tr>
+    <!-- /ko -->
+    </tbody>
+</table>

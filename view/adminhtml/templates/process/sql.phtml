@@ -1,0 +1,65 @@
+<?php /** @var \Luvina\Test\Block\Adminhtml\Process\Sql $block */ ?>
+<?php $staff = $block->getStaff() ?>
+<div class="range" id="period-range" style="margin-bottom: 35px">
+    <span class="field-row">
+        <label for="period-from" class="admin__control-support-text">
+            <span><?php /* @escapeNotVerified */
+                echo __('Date') ?>:</span>
+        </label>
+        <input type="text" class="input-text no-changes admin__control-text" name="form" id="period-from"
+               value="<?php echo $block->getPeriodFromParam() ?>" placeholder="From">
+    </span>
+    <span class="field-row" style="margin-left: 15px;">
+        <label for="period-to" class="admin__control-support-text">
+            <span><?php /* @escapeNotVerified */
+                echo __('Dev') ?>:</span>
+        </label>
+
+        <select name='state' class='form-control' id="period-to">
+            <option value=""><?php echo __('--- . --') ?></option>
+                <?php foreach ($staff as $item): ?>
+                    <option value="<?php echo $item->getData('staff_id') ?>"><?php echo $item->getData('dev') ?></option>
+                <?php endforeach; ?>
+        </select>
+    </span>
+    <button id="period-submit" type="button" class="primary" style="margin-left: 15px;">Submit</button>
+</div>
+<script>
+    require([
+        "jquery",
+        "mage/calendar"
+    ], function ($) {
+        $(document).ready(function () {
+            initDateRange();
+            initSubmitPeriodListener();
+        });
+
+        function initSubmitPeriodListener() {
+            $("#period-submit").on('click', function () {
+                var date, dev;
+                date = $("#period-from").val();
+                dev = $("#period-to").val();
+                if (!!date || !!dev) {
+                    date = !!date ? date : "";
+                    dev = !!dev ? dev : "";
+                    window.location.href = "<?php echo $block->getUrl('*/*/*'); ?>" + "?date=" + date + "&dev=" + dev
+                }
+            })
+        }
+
+        function initDateRange() {
+            $("#period-range").dateRange({
+                dateFormat: "d-M-yy",
+                timeFormat: "",
+                showsTime: false,
+                buttonText: "Date selector",
+                from: {
+                    id: "period-from"
+                },
+                to: {
+                    id: "period-to"
+                }
+            })
+        }
+    });
+</script>

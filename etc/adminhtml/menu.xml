@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Luvina_Test::luvina" title="Luvina" module="Luvina_Test" sortOrder="51" resource="Luvina_Test::luvina"/>
+        <add id="Luvina_Test::staff" title="Manage Staff" module="Luvina_Test" sortOrder="10" action="test/staff/index" resource="Luvina_Test::post" parent="Luvina_Test::luvina"/>
+        <add id="Luvina_Test::excellent_staff" title="Excellent Staff" module="Luvina_Test" sortOrder="11" action="test/process/index" resource="Luvina_Test::process" parent="Luvina_Test::luvina"/>
+        <add id="Luvina_Test::sql" title="Check SQL" module="Luvina_Test" sortOrder="11" action="test/process/sql" resource="Luvina_Test::sql" parent="Luvina_Test::luvina"/>
+    </menu>
+</config>

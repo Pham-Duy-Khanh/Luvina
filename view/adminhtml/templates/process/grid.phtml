@@ -1,0 +1,29 @@
+<?php /** @var \Luvina\Test\Block\Adminhtml\Process\Gird $block */?>
+<section class="admin__page-section campaign-statistics" id="campaign-list">
+    <div class="admin__page-section-title">
+                <span class="title">
+                    <?php /* @escapeNotVerified */
+                    echo __('Danh sách điểm của nhân viên') ?>
+                </span>
+    </div>
+    <?= $block->getGridHtml() ?>
+</section>
+
+<div class="test_js" id="test_js" data-bind="scope:'test_js'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+
+<script type="text/x-magento-init">
+            {
+                "#test_js": {
+                    "Magento_Ui/js/core/app": {
+                        "components": {
+                            "test_js": {
+                                "component": "Luvina_Test/js/report/gird",
+                                "json": <?= $block->getDataJson()?>
+                            }
+                        }
+                    }
+                }
+            }
+</script>
